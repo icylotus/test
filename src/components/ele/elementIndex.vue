@@ -1,8 +1,8 @@
 <template>
   <div id="app" v-if="!choose">
     <el-container>
-      <el-header>
-        <el-menu mode="horizontal">
+      <el-header style="background-color: #6390FF">
+        <el-menu mode="horizontal" style="background-color: #6390FF; padding:0 200px;">
           <img src="../../assets/food/还不饿.png" height="60"/>
           <el-menu-item index="1" @click="changePage('eleHome')">
             首页
@@ -10,10 +10,10 @@
           <el-menu-item index="2" @click="changePage('myOrder')">
             我的订单
           </el-menu-item>
-          <el-menu-item index="3">
+          <el-menu-item index="3" class="theWord">
             加盟合作
           </el-menu-item>
-          <el-menu-item index="4">
+          <el-menu-item index="4" class="theWord">
             我的客服
           </el-menu-item>
           <el-menu-item index="5"  @click="toIndex">
@@ -89,13 +89,12 @@ export default {
   .el-menu{
     background-color: #6390FF;
     padding:0 200px;
-
   }
 .el-menu img{
   float:left;
 }
 .el-menu--horizontal>.el-menu-item{
-  color:#ffffff;
+  color:#575759 !important;
 }
 .el-menu--horizontal>.el-menu-item:hover{
   color:#000000;
