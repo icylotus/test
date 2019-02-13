@@ -3,6 +3,7 @@ import Vuex from 'vuex';
 Vue.use(Vuex);
 
 const state = {
+  theIndexTop:true,
   messageCount: 66,
   popup_visible:false,
   popup_more_visible:false,
@@ -578,6 +579,9 @@ const state = {
 
 };
 const getters={
+  getTheIndexTop(state){
+    return state.theIndexTop;
+  },
   getNowImgNum(state){
     return state.nowImgNum;
   },
@@ -794,6 +798,9 @@ const mutations={
   getTheCircleImgList(state,item){
     state.circleImgList=item;
   },
+  changeTheIndexTop(state){
+    state.theIndexTop=!state.theIndexTop;
+  }
   /*getWrapperWidth_height(state,item1,item2){
     state.wrapperHeight=item1;
     state.wrapperWidth=item2;
@@ -801,6 +808,9 @@ const mutations={
   */
 };
 const actions ={
+  toChangeTheIndexTop(context){
+    context.commit('changeTheIndexTop');
+  },
   toGetTheNowImgNum(context,item){
     context.commit('getTheNowImgNum',item);
   },

@@ -1,8 +1,15 @@
 <template>
-  <div id="app">
+  <div id="app" v-if="!choose">
     <mt-header style="background-color: #232C40;">
-      <span slot="left">微信({{$store.state.messageCount}})</span>
-      <ul slot="right">
+      <ul slot="left">
+        <li>
+          <span style="font-size:20px;">微信({{$store.state.messageCount}})</span>
+          <button class="toBack" @click="toIndex">
+            点击返回主页
+          </button>
+        </li>
+      </ul>
+        <ul slot="right">
         <li>
           <mt-button @click="showPopupSearch()">
             <img :src="search" height="32" slot="icon"/>
@@ -48,7 +55,7 @@
   </div>
 </template>
 
-<script>
+<script scoped>
   import popup_search from './appItems/popup_search'
   import popup_more from './appItems/popup_more'
 
@@ -76,7 +83,20 @@
       fontColor:'',
     }
   },
-  methods:{
+    computed: {
+      choose: {
+        get: function () {
+          return this.$store.getters.getTheIndexTop;
+        },
+        set: function () {
+
+        }
+      }
+    },
+    methods: {
+    toIndex(){
+      this.$store.dispatch('toChangeTheIndexTop');
+    },
     selectedTabbar(item){
         this.weixinIcon=this.weixin;
         this.addressBookIcon=this.addressBook;
@@ -134,7 +154,7 @@
 }
 </script>
 
-<style>
+<style scoped>
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -177,5 +197,16 @@
   }
   .mint-toast{
     z-index:2500;
+  }
+  .toBack{
+    border:0;
+    background-color: rgba(0,0,0,0);
+    font-size:20px;
+    color:#64B398;
+    outline: none;
+  }
+  .toBack:hover{
+    background-color: rgba(0,0,0,0.5);
+    color:#FFF;
   }
 </style>
